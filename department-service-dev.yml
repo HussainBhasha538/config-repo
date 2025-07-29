@@ -1,3 +1,6 @@
+server:
+  port: 8082
+
 spring:
   application:
     name: department-service
@@ -33,20 +36,15 @@ spring:
       name: admin
       password: admin123
 
-doc:
+springdoc:
   api-docs:
     enabled: true
-
-springdoc:
   swagger-ui:
     enabled: true
     path: /swagger-ui.html
   paths-to-match: /api/**
   default-produces-media-type: application/json
   default-consumes-media-type: application/json
-
-server:
-  port: 8082
 
 eureka:
   client:
