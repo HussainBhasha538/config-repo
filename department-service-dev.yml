@@ -36,6 +36,7 @@ spring:
       name: admin
       password: admin123
 
+# ========== Swagger Configuration ==========
 springdoc:
   api-docs:
     enabled: true
@@ -46,6 +47,7 @@ springdoc:
   default-produces-media-type: application/json
   default-consumes-media-type: application/json
 
+# ========== Eureka Client ==========
 eureka:
   client:
     register-with-eureka: true
@@ -57,7 +59,10 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 30
 
+# ========== Actuator & Tracing ==========
 management:
+  server:
+    port: 8082
   endpoints:
     web:
       exposure:
@@ -65,18 +70,15 @@ management:
   endpoint:
     health:
       show-details: always
-  server:
-    port: 8082
-
   tracing:
+    enabled: true
     sampling:
       probability: 1.0
-    enabled: true
-
   zipkin:
     tracing:
       endpoint: http://localhost:9411/api/v2/spans
 
+# ========== Resilience4j ==========
 resilience4j:
   circuitbreaker:
     instances:
@@ -88,3 +90,11 @@ resilience4j:
         waitDurationInOpenState: 10s
         permittedNumberOfCallsInHalfOpenState: 2
         automaticTransitionFromOpenToHalfOpenEnabled: true
+
+# ========== Logging Configuration ==========
+logging:
+  level:
+    root: info  # Controls default level for all logs
+    com.example: debug  # Enables debug logs for your package
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %level - %msg%n"
