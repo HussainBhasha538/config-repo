@@ -36,6 +36,14 @@ spring:
       name: admin
       password: admin123
 
+  sleuth:
+    sampler:
+      probability: 1.0
+
+  zipkin:
+    enabled: true
+    base-url: http://localhost:9411
+
 springdoc:
   api-docs:
     enabled: true
