@@ -5,6 +5,9 @@ spring:
   application:
     name: department-service
 
+  main:
+    allow-bean-definition-overriding: true
+
   data:
     mongodb:
       uri: mongodb://localhost:27017/department_db
@@ -28,21 +31,10 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
-  main:
-    allow-bean-definition-overriding: true
-
   security:
     user:
       name: admin
       password: admin123
-
-  sleuth:
-    sampler:
-      probability: 1.0
-
-  zipkin:
-    enabled: true
-    base-url: http://localhost:9411
 
 springdoc:
   api-docs:
@@ -75,6 +67,15 @@ management:
       show-details: always
   server:
     port: 8082
+
+  tracing:
+    sampling:
+      probability: 1.0
+    enabled: true
+
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
 
 resilience4j:
   circuitbreaker:
