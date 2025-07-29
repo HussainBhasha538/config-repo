@@ -95,5 +95,6 @@ logging:
   level:
     root: info
     com.example: debug
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %level - %msg%n"
