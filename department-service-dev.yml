@@ -12,9 +12,8 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/department_db
 
-  cloud:
-    config:
-      uri: http://localhost:8888
+  config:
+    import: optional:configserver:http://localhost:8888  # ✅ Ensures config server loads before anything else
 
   kafka:
     bootstrap-servers: localhost:9092
@@ -36,7 +35,7 @@ spring:
       name: admin
       password: admin123
 
-# ========== Swagger Configuration ==========
+# ✅ Swagger Configuration
 springdoc:
   api-docs:
     enabled: true
@@ -47,7 +46,7 @@ springdoc:
   default-produces-media-type: application/json
   default-consumes-media-type: application/json
 
-# ========== Eureka Client ==========
+# ✅ Eureka Client
 eureka:
   client:
     register-with-eureka: true
@@ -59,7 +58,7 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 30
 
-# ========== Actuator & Tracing ==========
+# ✅ Actuator & Tracing
 management:
   server:
     port: 8082
@@ -78,7 +77,7 @@ management:
     tracing:
       endpoint: http://localhost:9411/api/v2/spans
 
-# ========== Resilience4j ==========
+# ✅ Resilience4j
 resilience4j:
   circuitbreaker:
     instances:
@@ -91,10 +90,10 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 2
         automaticTransitionFromOpenToHalfOpenEnabled: true
 
-# ========== Logging Configuration ==========
+# ✅ Logging Configuration
 logging:
   level:
-    root: info  # Controls default level for all logs
-    com.example: debug  # Enables debug logs for your package
+    root: info
+    com.example: debug
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %level - %msg%n"
