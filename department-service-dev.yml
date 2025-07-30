@@ -30,11 +30,6 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
-  security:
-    user:
-      name: admin
-      password: admin123
-
 # ✅ Swagger Configuration
 springdoc:
   api-docs:
