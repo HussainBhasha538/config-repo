@@ -13,7 +13,7 @@ spring:
       uri: mongodb://localhost:27017/department_db
 
   config:
-    import: optional:configserver:http://localhost:8181  # ✅ Ensures config server loads before anything else
+    import: optional:configserver:http://localhost:8888  # ✅ Ensures config server loads before anything else
 
   kafka:
     bootstrap-servers: localhost:9092
@@ -98,4 +98,5 @@ logging:
               MongoTemplate: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %level - %msg%n"
+
 
